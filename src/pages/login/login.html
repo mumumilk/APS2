@@ -1,0 +1,18 @@
+<ion-content style="background-color:#d8d8d8" padding>
+  <ion-card style="margin: auto;">
+    <ion-card-header><img src="http://i.imgur.com/avp6ybF.png"  style="height: auto; max-width: 100px; margin: auto" alt="logo"></ion-card-header>
+    <hr>
+    <ion-item>
+      <ion-label color="primary" floating>E-mail</ion-label>
+      <ion-input type="email" [(ngModel)]=usuario.email></ion-input>
+    </ion-item>
+        <ion-item>
+      <ion-label color="primary" floating>Senha</ion-label>
+      <ion-input type="password" [(ngModel)]=usuario.senha></ion-input>
+    </ion-item>
+    <ion-item padding>
+      <button ion-button block default (click)="entrar()">ENTRAR</button>
+      <button ion-button color="secondary" block outline small (click)="registrar()">Registrar</button>
+    </ion-item>
+  </ion-card>
+</ion-content>   

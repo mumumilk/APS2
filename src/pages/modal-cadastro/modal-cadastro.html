@@ -1,0 +1,43 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Cadastre-se</ion-title>
+    <ion-buttons end>
+      <button icon-button icon-only (click)="fecharModal()" style="background-color: transparent">
+              <ion-icon name="close"></ion-icon>
+          </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <div style="height: 100%; width: 100%" (click)="abrirAlert()">
+        <span id="imagemIcone" style="position: absolute; z-index: 10; left: 54%; top: 63%;"><ion-icon name="camera" style="font-size: 40px"></ion-icon></span>
+        <div id="avatar" [style.backgroundImage]="usuario.imagem"></div>
+      </div>
+      <!--<p style="text-align: center" ">-->
+      <!---->
+      <!--<img id="imagemPerfil" src="" alt="" style="border-radius: 50%; height: auto; max-width: 25%; position: relative; z-index: 1">-->
+
+      <!--</p>-->
+      <!---->
+
+    </ion-item>
+    <ion-item>  
+      <ion-label color="primary" floating>E-mail</ion-label>
+      <ion-input type="email" [(ngModel)]="usuario.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" floating>Senha</ion-label>
+      <ion-input type="password" [(ngModel)]="usuario.senha"></ion-input>
+    </ion-item>
+    <ion-item padding>
+      <button ion-button block style="width: 50%; margin: auto" color="secondary" outline (click)="cadastrar()">CADASTRAR</button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

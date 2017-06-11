@@ -1,7 +1,23 @@
-<ion-menu [content]="content">
+<ion-menu [content]="content" #menu>
   <ion-header>
     <ion-toolbar>
-      <ion-title>Menu</ion-title>
+      <table>
+        <tr>
+          <td>
+            <img src="http://i.imgur.com/hV6q7b8.png" alt="" style="height: auto; width: 50%">
+          </td>
+          <td>
+            <tr>
+              <ion-title style="text-align: center">{{emailUsuario}}</ion-title>
+            </tr>
+            <tr>
+              <button ion-button small block color="danger" outline (click)="sair()">Sair</button>
+            </tr>
+          </td>
+        </tr>
+      </table>
+
+
     </ion-toolbar>
   </ion-header>
 

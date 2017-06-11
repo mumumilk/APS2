@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <ion-title>Tarefa</ion-title>
+    <ion-buttons end>
+      <button icon-button icon-only (click)="fecharModal()" style="background-color: transparent">
+              <ion-icon name="close"></ion-icon>
+          </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div id="map" style="width: 90%; height: 50%; margin: auto;"></div>
+  <br>
+  <ion-item>
+    <ion-label stacked>Título</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>Descrição</ion-label>
+    <ion-textarea ion-input name="desc" style="max-width: 100%"></ion-textarea>
+  </ion-item>
+  <ion-item>
+    <ion-card style="margin: auto" *ngIf="contato">
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="https://www.1plusx.com/app/mu-plugins/all-in-one-seo-pack-pro/images/default-user-image.png">
+        </ion-avatar>
+        <h2>{{contato.displayName}}</h2>
+        <p>{{contato.phoneNumbers[0].value}}</p>
+      </ion-item>
+    </ion-card>
+    <button *ngIf="!contato" (click)="adicionarContato()" ion-button block>Adicionar contato</button>
+    <button *ngIf="contato" (click)="removerContato()" ion-button color="danger" block>Remover contato</button>
+  </ion-item>
+</ion-content>
