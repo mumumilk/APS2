@@ -9,7 +9,41 @@
 
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-item>
+      <ion-card *ngFor="let tarefa of tarefas" padding>
+        <ion-item>
+          <table>
+            <tr>
+              <td style="width: 80%">
+                <ion-title>
+                  {{tarefa.titulo}}
+                </ion-title>
+              </td>
+              <td>
+                <button icon-button icon-only style="background-color: transparent">
+                    <ion-icon name="create"></ion-icon>
+                </button>
+              </td>
+            </tr>
+          </table>
+        </ion-item>
+        <ion-item>
+          <hr>
+          <p padding>{{tarefa.descricao}}</p>
+        </ion-item>
+        <ion-item *ngIf="tarefa.contato">
+          <ion-icon name="person" item-left large></ion-icon>
+          <h2>{{tarefa.contato.nome}}</h2>
+          <p>{{tarefa.contato.fone}}</p>
+        </ion-item>
+        <ion-item>
+          <button ion-button outline icon-right default color="danger" style="width: 47%" (click)="statusTarefa(tarefa.id, index, false)">DESCARTAR <ion-icon name="trash"></ion-icon></button>
+          <button ion-button outline icon-right default color="confirm" style="width: 47%" (click)="statusTarefa(tarefa.id, index, true)">FEITO  <ion-icon name="checkmark"></ion-icon></button>
+        </ion-item>
+      </ion-card>
+    </ion-item>
+  </ion-list>
 </ion-content>
 
 <ion-fab right bottom padding>

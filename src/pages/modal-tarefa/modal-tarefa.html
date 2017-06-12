@@ -17,23 +17,26 @@
   <br>
   <ion-item>
     <ion-label stacked>Título</ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input type="text" [(ngModel)]="tarefa.titulo"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label stacked>Descrição</ion-label>
-    <ion-textarea ion-input name="desc" style="max-width: 100%"></ion-textarea>
+    <ion-textarea ion-input name="desc" style="max-width: 100%" [(ngModel)]="tarefa.descricao"></ion-textarea>
   </ion-item>
   <ion-item>
-    <ion-card style="margin: auto" *ngIf="contato">
+    <ion-card style="margin: auto" *ngIf="tarefa.contato.nome">
       <ion-item>
         <ion-avatar item-start>
           <img src="https://www.1plusx.com/app/mu-plugins/all-in-one-seo-pack-pro/images/default-user-image.png">
         </ion-avatar>
-        <h2>{{contato.displayName}}</h2>
-        <p>{{contato.phoneNumbers[0].value}}</p>
+        <h2>{{tarefa.contato.nome}}</h2>
+        <p>{{tarefa.contato.fone}}</p>
       </ion-item>
     </ion-card>
-    <button *ngIf="!contato" (click)="adicionarContato()" ion-button block>Adicionar contato</button>
-    <button *ngIf="contato" (click)="removerContato()" ion-button color="danger" block>Remover contato</button>
+    <button *ngIf="!tarefa.contato.nome" (click)="adicionarContato()" ion-button block>Adicionar contato</button>
+    <button *ngIf="tarefa.contato.nome" (click)="removerContato()" ion-button color="danger" block>Remover contato</button>
+  </ion-item>
+  <ion-item>
+    <button ion-button block large outline color="confirm" (click)="salvar()">salvar</button>
   </ion-item>
 </ion-content>

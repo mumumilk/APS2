@@ -12,7 +12,6 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { FirebaseProvider } from '../providers/firebase/firebase';
-import { MapaComponent } from '../components/mapa/mapa';
 import { Geolocation } from '@ionic-native/geolocation';
 
 
@@ -21,7 +20,6 @@ import { Geolocation } from '@ionic-native/geolocation';
     MyApp,
     HomePage,
     ListPage,
-    MapaComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +29,7 @@ import { Geolocation } from '@ionic-native/geolocation';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
   ],
   providers: [
     StatusBar,
