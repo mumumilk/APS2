@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
 import { FirebaseProvider } from '../../providers/firebase/firebase';
 import { Tarefa, Contato, Coords } from '../../models/tarefa';
+import { SMS } from '@ionic-native/sms';
+
 declare var google: any;
 /**
  * Generated class for the TarefasPage page.
@@ -24,7 +26,9 @@ export class TarefasPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public modalCtrl: ModalController,
-    public firebase: FirebaseProvider
+    public firebase: FirebaseProvider,
+    public sms: SMS,
+    public alrtController: AlertController
   ) {
     this.usuario = firebase.auth().currentUser;
     this.tarefas = new Array<Tarefa>();
@@ -58,8 +62,32 @@ export class TarefasPage {
         completada : completada,
         removida: true
       });
-      this.tarefas.splice(indice, 1);
+     this.tarefas.splice(indice, 1);
+
+     if(completada)
+      this.abrirAlert(this.tarefas[indice]);
     }
+  }
+
+  abrirAlert(tarefa: Tarefa) {
+    this.alrtController.create({
+      title: 'Envio sms',
+      message: 'Deseja realizar o envio de uma mensagem (SMS) para o ' + tarefa.contato.nome + '?',
+      buttons: [{
+        text: 'Cancelar',
+        role: 'cancel',
+      }, {
+        text: 'Enviar',
+        role: 'confirm',
+        handler: () => {
+          this.enviarMensagem(tarefa.contato.fone, tarefa.titulo);
+        }
+      }],
+    }).present();
+  }
+
+  enviarMensagem(numero: string, titulo: string) {
+    this.sms.send(numero, titulo + ' completada!');
   }
 
 }

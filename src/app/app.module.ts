@@ -13,6 +13,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { FirebaseProvider } from '../providers/firebase/firebase';
 import { Geolocation } from '@ionic-native/geolocation';
+import { SMS } from '@ionic-native/sms';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { Geolocation } from '@ionic-native/geolocation';
     ImagePicker,
     Camera,
     Contacts,
+    SMS,
     Geolocation
   ]
 })
