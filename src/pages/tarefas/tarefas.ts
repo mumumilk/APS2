@@ -62,10 +62,14 @@ export class TarefasPage {
         completada : completada,
         removida: true
       });
-     this.tarefas.splice(indice, 1);
 
-     if(completada)
-      this.abrirAlert(this.tarefas[indice]);
+      if(completada && this.tarefas[indice].contato){
+        this.abrirAlert(this.tarefas[indice]);
+      }
+        
+        // this.abrirAlert(this.tarefas.filter(x => x.id == id)[0]);
+
+     this.tarefas.splice(indice, 1);     
     }
   }
 

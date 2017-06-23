@@ -11,7 +11,7 @@
 <ion-content padding>
   <ion-list>
     <ion-item>
-      <ion-card *ngFor="let tarefa of tarefas" padding>
+      <ion-card *ngFor="let tarefa of tarefas; let i = index" padding>
         <ion-item>
           <table>
             <tr>
@@ -38,8 +38,8 @@
           <p>{{tarefa.contato.fone}}</p>
         </ion-item>
         <ion-item>
-          <button ion-button outline icon-right default color="danger" style="width: 47%" (click)="statusTarefa(tarefa.id, index, false)">DESCARTAR <ion-icon name="trash"></ion-icon></button>
-          <button ion-button outline icon-right default color="confirm" style="width: 47%" (click)="statusTarefa(tarefa.id, index, true)">FEITO  <ion-icon name="checkmark"></ion-icon></button>
+          <button ion-button outline icon-right default color="danger" style="width: 47%" (click)="statusTarefa(tarefa.id, i, false)">DESCARTAR <ion-icon name="trash"></ion-icon></button>
+          <button ion-button outline icon-right default color="confirm" style="width: 47%" (click)="statusTarefa(tarefa.id, i, true)">FEITO  <ion-icon name="checkmark"></ion-icon></button>
         </ion-item>
       </ion-card>
     </ion-item>

@@ -8,21 +8,22 @@ import { ListPage } from '../pages/list/list';
 import { FirebaseProvider } from "../providers/firebase/firebase";
 
 
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-
+  img : any;
   rootPage: any = 'Login';
 
   emailUsuario: string = " ";
 
   pages: Array<{title: string, component: any}>;
 
+
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public firebase : FirebaseProvider, public menu : MenuController ) {
     this.initializeApp();
-
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Dashboard', component: 'Dashboard' },
@@ -33,6 +34,9 @@ export class MyApp {
       this.rootPage = (!user) ? 'Login' : 'Tarefas';
       this.emailUsuario = firebase.auth().currentUser ? firebase.auth().currentUser.email : " ";
     })
+
+    this.img = localStorage.getItem('imagem');
+    
   }
 
   initializeApp() {

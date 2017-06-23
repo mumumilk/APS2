@@ -98,12 +98,13 @@ export class ModalCadastroPage {
     if (this.usuario.email && this.usuario.senha) {
       this.firebase.auth()
         .createUserWithEmailAndPassword(this.usuario.email, this.usuario.senha)
-        .then(x => this.mostraToast('Usuario cadastrado com sucesso'))
+        .then(x => {this.mostraToast('Usuario cadastrado com sucesso'); localStorage.setItem('imagem', this.usuario.imagem); this.fecharModal()})
         .catch((error) => { this.mostraToast(error.message) });
     }
     else{
       this.mostraToast('Usuario ou senha invalidos');
     }
+
   }
 
   mostraToast(msg: string) {

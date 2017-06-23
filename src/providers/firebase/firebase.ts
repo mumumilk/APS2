@@ -25,4 +25,8 @@ export class FirebaseProvider {
         return firebase.auth();
     }
 
+    storage(){
+        return firebase.storage();
+    }
+
 }
