@@ -33,9 +33,9 @@ export class MyApp {
     this.firebase.auth().onAuthStateChanged(user => {
       this.rootPage = (!user) ? 'Login' : 'Tarefas';
       this.emailUsuario = firebase.auth().currentUser ? firebase.auth().currentUser.email : " ";
+      this.img = localStorage.getItem('imagem');
     })
 
-    this.img = localStorage.getItem('imagem');
     
   }
 

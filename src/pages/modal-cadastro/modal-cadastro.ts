@@ -19,6 +19,7 @@ import { FirebaseProvider } from '../../providers/firebase/firebase';
 })
 export class ModalCadastroPage {
   private usuario: Usuario;
+  public img = 'http://i.imgur.com/hV6q7b8.png';
 
   private configuracao: CameraOptions = {
     quality: 100,
@@ -89,7 +90,7 @@ export class ModalCadastroPage {
 
   selecionarGaleria() {
     this.picker.getPictures(this.pickerOption).then(
-      (ImageData) => this.usuario.imagem = this.stringFoto(ImageData),
+      (ImageData) => {this.usuario.imagem = this.stringFoto(ImageData); this.img = (ImageData)},
       (err) => console.log(err)
     );
   }
@@ -98,8 +99,11 @@ export class ModalCadastroPage {
     if (this.usuario.email && this.usuario.senha) {
       this.firebase.auth()
         .createUserWithEmailAndPassword(this.usuario.email, this.usuario.senha)
-        .then(x => {this.mostraToast('Usuario cadastrado com sucesso'); localStorage.setItem('imagem', this.usuario.imagem); this.fecharModal()})
+        .then(x => {this.mostraToast('Usuario cadastrado com sucesso'); localStorage.setItem('imagem', this.img ); })
         .catch((error) => { this.mostraToast(error.message) });
+
+
+      this.fecharModal();
     }
     else{
       this.mostraToast('Usuario ou senha invalidos');
